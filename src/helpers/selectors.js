@@ -1,14 +1,28 @@
-export function getAppointmentsForDay(state, day) {
-  const filteredAppointments = state.days.filter(appointment => state.days === day);
-  return filteredAppointments;
+function getAppointmentsForDay(state, day) {
+  const filteredDays= state.days.filter(_day => _day.name === day)
+  if (filteredDays.length > 0){
+    const appointmentIds = filteredDays[0].appointments
+    const appointmentsObj = appointmentIds.map(id => state.appointments[id])
+    return appointmentsObj
+  } else {
+    return filteredDays
+  }
 }
 
 
-/* We need to start by finding the object in our state.days array who's name matches the provided day. 
-With this information we can now access that specific days appointment array.
+function getInterview(state, interview) {
+  if (interview === null) {
+    return null
+  } else {
+    for (let key in state.interviewers) {
+      let interviewer = state.interviewers[key]
+      if (interviewer.id === interview.interviewer) {
+        let student = interview.student
+        let newObj = {student, interviewer}
+        return newObj
+      }
+    }
+  }
+}
 
-Once we have access to the appointment array for the given day, we'll need to iterate through it, 
-comparing where it's id matches the id of states.appointments and return that value.
-
-We should also probably do a bit of validation. If there are no appointments on the given day, 
-our days data will be empty. According to our tests, in a case like this, we should return an empty array. */
+export {getAppointmentsForDay, getInterview}
