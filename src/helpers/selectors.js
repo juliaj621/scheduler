@@ -11,12 +11,14 @@ function getAppointmentsForDay(state, day) {
 
 
 function getInterview(state, interview) {
-  if (interview === null) {
+  if (interview === null || undefined) {
     return null
   } else {
     for (let key in state.interviewers) {
       let interviewer = state.interviewers[key]
       if (interviewer.id === interview.interviewer) {
+        // console.log("interview!!!!", interview)
+        // console.log("interviewer!!!", interviewer)
         let student = interview.student
         let newObj = {student, interviewer}
         return newObj
