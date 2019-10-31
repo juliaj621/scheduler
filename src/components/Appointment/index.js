@@ -15,6 +15,7 @@ export default function Appointment(props) {
   const SAVE = "SAVE";
   const DELETE = "DELETE"
   const CONFIRM = "CONFIRM"
+  const EDIT = "EDIT"
 
 const { mode, transition, back } = useVisualMode(
   props.interview ? SHOW : EMPTY
@@ -53,6 +54,9 @@ function save(name, interviewer) {
         onDelete={() => {
           transition(CONFIRM)
         }}
+        onEdit={() => {
+          transition(EDIT)
+        }}
       />
     )}
     {mode === CREATE && (
@@ -67,6 +71,20 @@ function save(name, interviewer) {
         }}
       />
     )}
+  {mode === EDIT && (
+    <Form 
+      interviewers={props.interviewers}
+      name={props.interview.student}
+      interviewer={props.interview.interviewer.id}
+      onCancel={() => {back(SHOW)}}
+      onSave={(name, interviewer) => {
+        transition(SAVE)
+        props.bookInterview(props.id, save(name, interviewer)).then(() => 
+        transition(SHOW)
+        )
+      }}
+    />
+  )}
     </div>
     </React.Fragment>
   );
