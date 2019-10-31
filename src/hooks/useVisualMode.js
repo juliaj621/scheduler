@@ -5,7 +5,7 @@ take in an initial mode
 set the mode state with the initial mode provided
 return an object with a property mode 
 */
-function useVisualMode (initial) {
+export default function useVisualMode (initial) {
   const [mode, setMode] = useState(initial)
   const [history, setHistory] = useState([initial]);
   function transition (newMode, replace) {
@@ -25,4 +25,4 @@ function useVisualMode (initial) {
   
 }
 
-export {useVisualMode}
+// export {useVisualMode}
