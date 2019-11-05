@@ -48,10 +48,11 @@ export default function useApplicationData() {
       Promise.resolve(axios.get(`/api/appointments`)),
       Promise.resolve(axios.get(`/api/interviewers`)),
     ]).then((all) => {
+      console.log("logged")
       dispatch({type: 'SET_APPLICATION_DATA', value: {...state, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}});  
     })
     .catch();
-  }, )
+  },[])
 
   function bookInterview(id, interview) {
     return axios.put(`/api/appointments/${id}`, {interview})
