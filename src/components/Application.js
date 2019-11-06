@@ -1,7 +1,7 @@
 import React from "react";
 import DayList from "components/DayList"
 import "components/Application.scss";
-import Appointment from "components/Appointment";
+import Appointment from "components/Appointment/index";
 import {getAppointmentsForDay, getInterview, getInterviewersForDay} from '../helpers/selectors'
 import useApplicationData from '../hooks/useApplicationData'
 
@@ -52,7 +52,9 @@ export default function Application(props) {
 />
       </section>
       <section className="schedule">
+
       <ul>{newAppointments}</ul>
+
       </section>
     </main>
   );
