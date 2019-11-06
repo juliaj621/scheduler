@@ -6,7 +6,7 @@ A scheduler tool that allows users to create, edit, and delete interviews. The i
 
 Click on picture for link to an interactive video demo
 <a href="https://youtu.be/VtDZQggR4uk" target="_blank"><img src="public/images/scheduler-gif.gif" 
-alt="scheduler demo link to youtube" width="900" height="500"/></a>
+alt="scheduler demo link to youtube" width="480" height="300"/></a>
 
 
 !["Home Page"](https://github.com/juliaj621/scheduler/blob/master/public/images/SCHEDULER-PIC.png?raw=true)
