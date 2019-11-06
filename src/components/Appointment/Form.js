@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
-// import { restElement } from '@babel/types';
 
 export default function Form(props) {
   const [name, setName] = useState(props.name || "");
@@ -10,21 +9,20 @@ export default function Form(props) {
   const cancel = () => {
     reset()
     props.onCancel()
-  }
+  };
   const reset = () => {
-    setName("")
-    setInterviewer(null)
-  }
+    setName("");
+    setInterviewer(null);
+  };
 
   function validate() {
     if (name === "") {
       setError("Student name cannot be blank");
       return;
     }
-  
     setError("");
     props.onSave(name, interviewerId);
-  }
+  };
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -39,7 +37,7 @@ export default function Form(props) {
             onChange={e => setName(e.target.value)}
             data-testid="student-name-input"
           />
-        </form> 
+        </form>
         <section className="appointment__validation">{error}</section>
         <InterviewerList interviewers={props.interviewers} interviewer={interviewerId} setInterviewer={id => setInterviewer(id)} />
       </section>
@@ -51,5 +49,4 @@ export default function Form(props) {
       </section>
     </main>
   );
-
-}
+};

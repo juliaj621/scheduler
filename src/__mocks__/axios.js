@@ -99,7 +99,7 @@ export default {
       });
     }
 
-    if (url.includes("/api/interviewers")){
+    if (url.includes("/api/interviewers")) {
       /* Resolve interviewers data */
       return Promise.resolve({
         status: 204,
@@ -125,7 +125,7 @@ export default {
       });
     }
 
-    if (url.includes("/api/interviewers")){
+    if (url.includes("/api/interviewers")) {
       /* Resolve interviewers data */
       return Promise.resolve({
         status: 204,
