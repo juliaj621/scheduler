@@ -24,14 +24,14 @@ const { mode, transition, back } = useVisualMode(
   props.interview ? SHOW : EMPTY
 );
 
-function save(name, interviewer) {
+function save(name, interviewer, number) {
   const interview = {
     student: name,
     interviewer
   };
   transition(SAVE);
   props
-   .bookInterview(props.id, interview)
+   .bookInterview(props.id, interview, number)
    .then(() => transition(SHOW))
    .catch(error => transition(ERROR_SAVE, true));
 }
@@ -46,6 +46,8 @@ function destroy(event) {
 
   return (
     <React.Fragment>
+    <article data-testid="appointment">
+    {/* className="appointment" */}
     <h4>{Header(props)}</h4>
     <div>
     {mode === EMPTY && <Empty onAdd={() => {transition(CREATE)}} />}
@@ -77,7 +79,7 @@ function destroy(event) {
         interviewers={props.interviewers}
         onCancel={() => {back(EMPTY)}}
         onSave={(name, interviewer) => {
-          save(name, interviewer)
+          save(name, interviewer, -1)
         }}
       />
     )}
@@ -87,7 +89,7 @@ function destroy(event) {
       name={props.interview.student}
       interviewer={props.interview.interviewer.id}
       onCancel={() => {back(SHOW)}}
-      onSave={(name, interviewer) => {save(name, interviewer)
+      onSave={(name, interviewer) => {save(name, interviewer, 0)
       }}
     />
   )}
@@ -104,6 +106,7 @@ function destroy(event) {
     />
   )}
     </div>
+    </article>
     </React.Fragment>
   );
 }
